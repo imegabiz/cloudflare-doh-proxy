@@ -25,4 +25,4 @@ jobs:
           node-version: "20"
 
       - name: Run config sanitizer
-        run: node .github/scripts/sanitize-fragment-config.mjs
+        run: node .github/scripts/review-fragment-config.mjs
