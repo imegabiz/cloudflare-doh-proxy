@@ -14,7 +14,7 @@
         "uplinkOnly": 0,
         "downlinkOnly": 0
       },
-      "1": {
+      "12": {
         "uplinkOnly": 0,
         "downlinkOnly": 0,
         "connIdle": 12
@@ -28,7 +28,7 @@
     "servers": [
       {
         "tag": "doh-proxy",
-        "address": "https://cloudflare-dns.com/dns-query",
+        "address": "${workerUrl}",
         "timeoutMs": 8000
       },
       {
@@ -139,7 +139,7 @@
       "tag": "dns-out",
       "protocol": "dns",
       "settings": {
-        "userLevel": 1
+        "userLevel": 12
       }
     },
     {
@@ -186,11 +186,7 @@
                 "packets": "tlshello",
                 "lengths": [
                   "0",
-                  "48",
-                  "24",
-                  "12",
-                  "6",
-                  "3",
+                  "104",
                   "1"
                 ],
                 "delays": [
@@ -204,17 +200,13 @@
               "settings": {
                 "packets": "1-1",
                 "lengths": [
-                  "48",
-                  "24",
-                  "12",
-                  "6",
-                  "3",
+                  "114",
                   "1"
                 ],
                 "delays": [
                   "1"
                 ],
-                "maxSplit": "30"
+                "maxSplit": "11"
               }
             }
           ]
@@ -244,10 +236,6 @@
               "settings": {
                 "reset": "28",
                 "noise": [
-                  {
-                    "rand": "1200-1230",
-                    "delay": "10"
-                  },
                   {
                     "rand": "1200-1230",
                     "delay": "10"
@@ -445,7 +433,7 @@
         ]
       },
       {
-        "outboundTag": "udp-noises",
+        "outboundTag": "udp-direct",
         "network": "udp",
         "ip": [
           "0.0.0.0/0",
@@ -473,7 +461,7 @@
         ]
       },
       {
-        "outboundTag": "tcp-fragment",
+        "outboundTag": "tcp-direct",
         "network": "tcp",
         "ip": [
           "0.0.0.0/0",
